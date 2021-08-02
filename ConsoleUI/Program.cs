@@ -16,18 +16,27 @@ namespace ConsoleUI
 
             //CategoryTest(categoryManager);
 
-            //viewTest(productManager);
+            viewTest(productManager);
 
         }
 
         private static void viewTest(ProductManager productManager)
         {
-            foreach (var view in productManager.GetProductDetails())
+            var result = productManager.GetProductDetails();
+
+            if (result.Success == true)
+            {
+                foreach(var view in result.Data)
             {   // biraz çorba ama anlarsın
-                Console.WriteLine("product id: " + view.ProductId +
-                    "\t" + view.ProductName +
-                    "\t in stock: " + view.UnitsInStock +
-                    "\t category name: " + view.CategoryName);
+                    Console.WriteLine("product id: " + view.ProductId +
+                        "\t" + view.ProductName +
+                        "\t in stock: " + view.UnitsInStock +
+                        "\t category name: " + view.CategoryName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
@@ -41,7 +50,7 @@ namespace ConsoleUI
 
         private static void ProductTest(ProductManager productManager)
         {
-            foreach (var product in productManager.GetByUnitPrice(50, 200))
+            foreach (var product in productManager.GetByUnitPrice(50, 200).Data)
             {
                 Console.WriteLine(product.CategoryId + "  " + product.ProductName + " \t " + product.UnitPrice + " $");
             }
