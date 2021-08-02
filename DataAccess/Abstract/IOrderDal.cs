@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IProductDal:IEntityRepository<Product>
+    public interface IOrderDal: IEntityRepository<Order>
     {
-        
     }
+    // yeni bir tablo eklerken ikinci yapman gereken yer
+    // Dal interface eklemen lazım
 }
-
-
-// code refactoring codun iyileştirilmesi

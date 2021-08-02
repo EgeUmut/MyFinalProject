@@ -1,4 +1,4 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     // T ye gelebilecek değerleri kısıtlamak için generic constraint ekliyoruz
     // where T:class referans tip olabilir demek , IEntity yazarsan sadece IEntity referansı olan classları kabul eder
