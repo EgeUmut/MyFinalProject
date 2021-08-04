@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -24,12 +25,14 @@ namespace Business.Concrete
             _ProductDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
             //validation ve business code aynı şey değildir
             //validation-doğrulama 
 
-            ValidationTool.Validate(new ProductValidator(), product);
+            //Eski validation yöntemimiz direk attribute olarak yapacaksın bunları
+            //ValidationTool.Validate(new ProductValidator(), product);
 
             //if (product.ProductName.Length<2)
             //{
@@ -46,6 +49,7 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAll()
         {
             //iş kodları - yetkisi var mı , if kodları etc.
+            //bunu da validation da yapman lazım ama kalsın şimdilik örnek olarak.
             if (DateTime.Now.Hour == 3)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
@@ -61,7 +65,7 @@ namespace Business.Concrete
 
         public IDataResult<Product> GetById(int productId)
         {
-            return new SuccessDataResult<Product>(_ProductDal.Get(p => p.ProductId == productId));
+            return new SuccessDataResult<Product>(_ProductDal.Get(p => p.ProductId == productId),Messages.GetByIdListed);
         }
 
         public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)
