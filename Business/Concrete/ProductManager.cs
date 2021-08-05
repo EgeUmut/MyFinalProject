@@ -30,7 +30,9 @@ namespace Business.Concrete
             _CategoryService = categoryService;
             
         }
-
+        //Claim 
+        // 1234 olarak girilen şifreyi  ASDDSAFJASFA olarak tutmaya hashing denir.
+        //[SecuredOperation("admin,product.add")] //authorization
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -44,10 +46,10 @@ namespace Business.Concrete
             //{
             //    // magic strings
             //    return new ErrorResult(Messages.ProductNameInvalid);
-            //}  validations a bak orda yapman lazım bunları
+            //}  you must do this in validations class not here!
 
             //bir kategoride en fazla 10 ürün olabilir test. aşağıda method olarak ekledik
-            // iş kurallarını kontrol eden kısım
+            // this method check business rules
             IResult result = BusinessRules.Run(
                 CheckIfProductCountOfCategoryCorrect(product.CategoryId),
                 CheckProductNameDifference(product.ProductName),
@@ -65,8 +67,8 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            //iş kodları - yetkisi var mı , if kodları etc.
-            //bunu da validation da yapman lazım ama kalsın şimdilik örnek olarak.
+            //business codes - check authorization - if codes etc.
+            //this method shoul be in validations. It is here for an example you can delete it.
             if (DateTime.Now.Hour == 3)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);

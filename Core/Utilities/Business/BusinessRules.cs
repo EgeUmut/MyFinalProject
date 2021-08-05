@@ -9,6 +9,7 @@ namespace Core.Utilities.Business
 {
     public class BusinessRules
     {   // params ile istediğin kadar parametre gönderebilirsin.
+        // check business rules method.
         public static IResult Run(params IResult[] logics)
         {
             foreach (var logic in logics)

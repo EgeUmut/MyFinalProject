@@ -19,6 +19,7 @@ namespace Business.DependencyResolves.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {   //startup içine yazmaktansa buraya topla hepsini
+            // bri class bu objelerin new() ini isterse burası halledecek.
             //autofac in çalışması için program.cs ye eklemen lazım
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
