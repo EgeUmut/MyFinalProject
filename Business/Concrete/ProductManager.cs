@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
@@ -32,7 +33,7 @@ namespace Business.Concrete
         }
         //Claim 
         // 1234 olarak girilen şifreyi  ASDDSAFJASFA olarak tutmaya hashing denir.
-        //[SecuredOperation("admin,product.add")] //authorization
+        [SecuredOperation("admin,product.add")] //authorization
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
