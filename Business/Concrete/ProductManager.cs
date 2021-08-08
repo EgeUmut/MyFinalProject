@@ -33,7 +33,7 @@ namespace Business.Concrete
         }
         //Claim 
         // 1234 olarak girilen şifreyi  ASDDSAFJASFA olarak tutmaya hashing denir.
-        [SecuredOperation("admin,product.add")] //authorization
+        [SecuredOperation("product.add,admin")] //authorization    sıkıntıları var
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -66,6 +66,7 @@ namespace Business.Concrete
                     return new SuccessResult(Messages.ProductAdded);
         }
 
+        //[CacheAspect]   //key , value
         public IDataResult<List<Product>> GetAll()
         {
             //business codes - check authorization - if codes etc.

@@ -27,6 +27,7 @@ namespace Business.BusinessAspects.Autofac
 
         protected override void OnBefore(IInvocation invocation)
         {
+
             var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
             foreach (var role in _roles)
             {
@@ -34,6 +35,7 @@ namespace Business.BusinessAspects.Autofac
                 {
                     return;
                 }
+                
             }
             throw new Exception(Messages.AuthorizationDenied);
         }
