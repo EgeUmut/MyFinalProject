@@ -124,7 +124,7 @@ namespace Business.Concrete
             var result = _ProductDal.GetAll(p => p.ProductName == productName).Any();
             if (result)
             {
-                return new ErrorResult();
+                return new ErrorResult(Messages.ProductNameIsNotValid);
             }
             else
             {
