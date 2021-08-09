@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -19,13 +20,14 @@ namespace Business.Concrete
         {
             _categoryDal = categoryDal;
         }
-
+        [CacheAspect]
         public IDataResult<List<Category>> GetAll()
         {
             // business codes
             return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
+        [CacheAspect]
         public IDataResult<Category> GetById(int categoryId)
         {
             // select * from categories where categoryId = 3

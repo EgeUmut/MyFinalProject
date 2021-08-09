@@ -7,6 +7,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Core.DependencyResolvers
             serviceCollection.AddMemoryCache(); //generic cache
             serviceCollection.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>(); // yeni bir cache methoduna geçmek istersen Memory yazısını değiştirmen yeterli
+            serviceCollection.AddSingleton<Stopwatch>();
         }
     }
 }
