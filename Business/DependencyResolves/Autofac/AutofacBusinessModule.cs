@@ -34,6 +34,9 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
+            builder.RegisterType<SubProductManager>().As<ISubProductService>().SingleInstance();
+            builder.RegisterType<EfSubProductDal>().As<ISubProductDal>().SingleInstance();
+
             //builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

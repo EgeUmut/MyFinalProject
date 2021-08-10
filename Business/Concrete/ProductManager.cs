@@ -86,12 +86,13 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
         {
             return new SuccessDataResult<List<Product>>(_ProductDal.GetAll(p => p.CategoryId == id));
+            
         }
         [CacheAspect]
         [PerformanceAspect(5)]
         public IDataResult<Product> GetById(int productId)
         {
-            return new SuccessDataResult<Product>(_ProductDal.Get(p => p.ProductId == productId),Messages.GetByIdListed);
+            return new SuccessDataResult<Product>(_ProductDal.Get(p => p.Id == productId),Messages.GetByIdListed);
         }
 
         public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)
@@ -162,6 +163,12 @@ namespace Business.Concrete
             Add(procduct);
 
             return null;
+        }
+        //test
+        public IResult Delete(int productId)
+        {
+            _ProductDal.Delete(_ProductDal.Get(p => p.Id == productId));
+            return new SuccessResult();
         }
     }
 }

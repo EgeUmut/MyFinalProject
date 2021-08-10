@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
+    [SecuredOperation("product.add,admin")]
     [Route("api/[controller]")]
     [ApiController] //attribute classın controller olduğunu belirtir
                     //javada-annotation
@@ -72,6 +74,18 @@ namespace WebAPI.Controllers
             {
                 return BadRequest(result);
             }
+        }
+        //test
+        [HttpPost("DeletById")]
+        public IActionResult DeleteById(int Id)
+        {
+            var result = _productService.Delete(Id);
+
+            if (result.Success)
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
     }
 }

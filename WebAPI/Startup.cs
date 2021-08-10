@@ -94,7 +94,7 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            // middleware -- hangi yapýlarýn sýrasýyla iþe gireceðine karar veriyosun.
+            // middleware 
             app.UseAuthentication();
             app.UseAuthorization();
 

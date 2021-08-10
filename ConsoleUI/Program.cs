@@ -46,7 +46,7 @@ namespace ConsoleUI
         {
             foreach (var category in categoryManager.GetAll().Data)
             {
-                Console.WriteLine(category.CategoryId + " " + category.CategoryName);
+                Console.WriteLine(category.Id + " " + category.CategoryName);
             }
         }
 

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Category:IEntity
+    public class SubProduct:IEntity
     {
         public int Id { get; set; }
-        public string CategoryName { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+        public string Name { get; set; }
     }
 }

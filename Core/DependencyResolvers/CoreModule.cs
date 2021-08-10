@@ -18,6 +18,7 @@ namespace Core.DependencyResolvers
     {
         public void load(IServiceCollection serviceCollection)
         {
+            //singleton kısımlarını buraya aldık
             serviceCollection.AddMemoryCache(); //generic cache
             serviceCollection.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>(); // yeni bir cache methoduna geçmek istersen Memory yazısını değiştirmen yeterli

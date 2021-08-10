@@ -21,6 +21,7 @@ namespace Business.Abstract
 
         IResult Add(Product product);
         IResult Update(Product product);
+        IResult Delete(int productId);
 
         IDataResult<Product> GetById(int productId);
 
