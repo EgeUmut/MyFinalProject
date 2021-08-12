@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    public class ProductDetailDto : IDto
+    public class SubProductSummary:IDto
     {
         public int Id { get; set; }
-        public string ProductName { get; set; }
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
         public short UnitsInStock { get; set; }
-
+        public decimal UnitPrice { get; set; }
     }
 }
-

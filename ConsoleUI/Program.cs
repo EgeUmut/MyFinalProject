@@ -30,7 +30,7 @@ namespace ConsoleUI
             {
                 foreach(var view in result.Data)
             {   // biraz çorba ama anlarsın
-                    Console.WriteLine("product id: " + view.ProductId +
+                    Console.WriteLine("product id: " + view.Id +
                         "\t" + view.ProductName +
                         "\t in stock: " + view.UnitsInStock +
                         "\t category name: " + view.CategoryName);

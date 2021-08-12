@@ -23,6 +23,7 @@ namespace Core.DependencyResolvers
             serviceCollection.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>(); // yeni bir cache methoduna geçmek istersen Memory yazısını değiştirmen yeterli
             serviceCollection.AddSingleton<Stopwatch>();
+            
         }
     }
 }
